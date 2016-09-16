@@ -7,24 +7,18 @@ entries.shim()
 import 'ratchet-npm/dist/css/ratchet.css'
 //import 'ratchet-npm/dist/css/ratchet-theme-ios.css'
 
-import ref from './firebase'
 import App from './App'
 import DevicesList from './DevicesList'
 import Device from './Device'
 import './index.css'
 
-ref.on('value', (snapshot) => {
-  // Dirty temp fix
-  window.store = snapshot.val()
-
-  ReactDOM.render(
-    <Router history={hashHistory}>
-      <Route path="/" component={App}>
-        <IndexRoute component={DevicesList} />
-        <Route path="device/:id" component={Device} />
-      </Route>
-    </Router>,
-    //<App store={snapshot.val() || {}} actions={actions}/>,
-    document.getElementById('root')
-  )
-})
+ReactDOM.render(
+  <Router history={hashHistory}>
+    <Route path="/" component={App}>
+      <IndexRoute component={DevicesList} />
+      <Route path="device/:id" component={Device} />
+    </Route>
+  </Router>,
+  //<App store={snapshot.val() || {}} actions={actions}/>,
+  document.getElementById('root')
+)

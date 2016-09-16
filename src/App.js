@@ -1,20 +1,37 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { NavBar, Title } from 'react-ratchet'
 import { Link } from 'react-router'
 
-export default ({ children }) => (
-  <div className="App">
-    <NavBar>
-      <Link to="/" className="btn-nav btn-link btn pull-left">
-        <span type="left-nav" className="icon-left-nav icon"></span>
-        Home
-      </Link>
-      <Title>Citrus Home</Title>
-    </NavBar>
-    <div className="content">
+import ref from './firebase'
 
-      {children}
+class App extends Component {
+  componentDidMount() {
+    ref.on('value', (snapshot) => {
+      // Dirty temp fix
+      window.store = snapshot.val()
+      this.forceUpdate()
+    })
+  }
 
-    </div>
-  </div>
-)
+  render() {
+    console.log('render')
+    return (
+      <div className="App">
+        <NavBar>
+          <Link to="/" className="btn-nav btn-link btn pull-left">
+            <span type="left-nav" className="icon-left-nav icon"></span>
+            Home
+          </Link>
+          <Title>Citrus Home</Title>
+        </NavBar>
+        <div className="content">
+
+          {this.props.children}
+
+        </div>
+      </div>
+    )
+  }
+}
+
+export default App
