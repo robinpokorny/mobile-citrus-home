@@ -9,8 +9,10 @@
   "dependencies": {
     "firebase": "^3.4.0",
     "object.entries": "^1.0.3",
+    "ratchet-npm": "^2.0.4",
     "react": "^15.3.1",
-    "react-dom": "^15.3.1"
+    "react-dom": "^15.3.1",
+    "react-ratchet": "^0.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
