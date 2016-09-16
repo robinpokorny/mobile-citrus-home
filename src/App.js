@@ -1,22 +1,20 @@
 import React from 'react'
-import { NavButton, NavBar, Title } from 'react-ratchet'
+import { NavBar, Title } from 'react-ratchet'
+import { Link } from 'react-router'
 
-export default ({ store }) => (
+export default ({ children }) => (
   <div className="App">
     <NavBar>
-      <NavButton href='#'>
-        Back
-      </NavButton>
+      <Link to="/" className="btn-nav btn-link btn pull-left">
+        <span type="left-nav" className="icon-left-nav icon"></span>
+        Home
+      </Link>
       <Title>Citrus Home</Title>
     </NavBar>
     <div className="content">
 
-      <ul>
-        {Object.entries(store.devices).map(([key, value]) =>
-          <li key={key}>{value.label}</li>
-        )}
-      </ul>
-      
+      {children}
+
     </div>
   </div>
 )

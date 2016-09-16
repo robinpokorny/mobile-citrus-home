@@ -12,7 +12,8 @@
     "ratchet-npm": "^2.0.4",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
-    "react-ratchet": "^0.5.0"
+    "react-ratchet": "^0.5.0",
+    "react-router": "^2.8.1"
   },
   "scripts": {
     "start": "react-scripts start",
