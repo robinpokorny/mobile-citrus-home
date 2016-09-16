@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <h1>Citrus Home</h1>
-      </div>
-    );
-  }
-}
-
-export default App;
+export default ({ store }) => (
+  <div className="App">
+    <h1>Citrus Home</h1>
+    <ul>
+      {Object.entries(store.devices).map(([key, value]) =>
+        <li key={key}>{value.label}</li>
+      )}
+    </ul>
+  </div>
+)
