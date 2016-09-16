@@ -1,6 +1,6 @@
 import React, { Component, cloneElement } from 'react'
 import { NavBar, Title } from 'react-ratchet'
-import { Link } from 'react-router'
+import { IndexLink } from 'react-router'
 
 import ref from './firebase'
 
@@ -22,10 +22,14 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar>
-          <Link to="/" className="btn-nav btn-link btn pull-left">
+          <IndexLink
+            to="/"
+            className="btn-nav btn-link btn pull-left"
+            activeStyle={{display: 'none'}}
+          >
             <span type="left-nav" className="icon-left-nav icon"></span>
             Home
-          </Link>
+          </IndexLink>
           <Title>Citrus Home</Title>
         </NavBar>
         <div className="content">
