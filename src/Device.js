@@ -15,6 +15,7 @@ const renderControlType = {
   ),
   [controlTypes.slider]: (deviceId, controlId, value, current = 50, onChange) => (
     <input
+      className="btn"
       key={controlId}
       type="range"
       min={0}
@@ -26,6 +27,7 @@ const renderControlType = {
   ),
   [controlTypes.select]: (deviceId, controlId, value, current = 0, onChange) => (
     <select
+      className="btn panel-select"
       key={controlId}
       value={current}
       onChange={(e) => onChange(deviceId, controlId, e.target.value)}
@@ -38,8 +40,13 @@ const renderControlType = {
 }
 
 
-export default ({ params }) => {
-  const { devices, devicesTypes } = window.store
+export default ({ params, store }) => {
+  const { devices, devicesTypes } = store
+
+  if (!devices || !devicesTypes) {
+    return (<div className="content-padded"><h2>Loading…</h2></div>)
+  }
+
   const deviceId = params.id
   const device = devices[deviceId]
   const { typeId, controls = {} } = device

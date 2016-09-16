@@ -1,20 +1,24 @@
-import React, { Component } from 'react'
+import React, { Component, cloneElement } from 'react'
 import { NavBar, Title } from 'react-ratchet'
 import { Link } from 'react-router'
 
 import ref from './firebase'
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { store: {} };
+  }
+
   componentDidMount() {
-    ref.on('value', (snapshot) => {
-      // Dirty temp fix
-      window.store = snapshot.val()
-      this.forceUpdate()
-    })
+    ref.on('value', (snapshot) =>
+      this.setState({ store: snapshot.val() })
+    )
   }
 
   render() {
-    console.log('render')
+    const { store } = this.state
+
     return (
       <div className="App">
         <NavBar>
@@ -26,7 +30,7 @@ class App extends Component {
         </NavBar>
         <div className="content">
 
-          {this.props.children}
+          {this.props.children && cloneElement(this.props.children, { store })}
 
         </div>
       </div>
