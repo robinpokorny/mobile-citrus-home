@@ -40,8 +40,9 @@ const renderControlType = {
 
 export default ({ params }) => {
   const { devices, devicesTypes } = window.store
-  const device = devices[params.id]
-  const { id: deviceId, typeId, controls = {} } = device
+  const deviceId = params.id
+  const device = devices[deviceId]
+  const { typeId, controls = {} } = device
   const type = devicesTypes[typeId]
 
   return (
