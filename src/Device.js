@@ -8,6 +8,7 @@ const renderControlType = {
   [controlTypes.button]: (deviceId, controlId, value) => (
     <Button
       key={controlId}
+      className="btn-primary"
       onClick={(a) => console.log(deviceId, controlId, 'clicked')}
     >
       {value.label}
